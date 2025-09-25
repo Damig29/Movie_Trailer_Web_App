@@ -1,0 +1,48 @@
+import star from '../assets/star.svg';
+import stats from '../assets/stats.svg';
+
+const Header = ({ movieInfo }) => {
+    // Format runtime from minutes to hours and minutes
+    const formatRuntime = (minutes) => {
+        if (!minutes) return 'Unknown';
+        const hours = Math.floor(minutes / 60);
+        const mins = minutes % 60;
+        return hours > 0 ? `${hours}h ${mins}m` : `${mins}m`;
+    };
+
+    // Format rating with vote count
+    const formatRating = (rating, voteCount) => {
+        if (!rating) return 'N/A';
+        const formattedRating = rating.toFixed(1);
+        const formattedVoteCount = voteCount ? `(${voteCount.toLocaleString()})` : '';
+        return `${formattedRating}/10 ${formattedVoteCount}`;
+    };
+
+    return (
+        <div className="flex justify-between p-10 w-full">
+            <div>
+                <h1 className="text-4xl font-bold">{movieInfo?.title || 'Unknown Title'}</h1>
+                <div className="flex gap-2 text-gray-100">
+                    <p>{movieInfo?.release_date?.split('-')[0] || 'Unknown Year'}</p>
+                    <span>•</span>
+                    <p>{movieInfo?.adult ? 'R' : 'PG-13'}</p>
+                    <span>•</span>
+                    <p>{formatRuntime(movieInfo?.runtime)}</p>
+                </div>
+            </div>
+            <div className='flex text-gray-100 gap-3'>
+                <div className='flex bg-indigo-950 h-10 rounded-md items-center p-2'>
+                    <img src={star} alt="Star Rating" className='w-5 mr-2' />
+                    <span className='text-white font-bold'>{movieInfo?.vote_average?.toFixed(1) || 'N/A'}</span>
+                    <span>/10 {movieInfo?.vote_count ? `(${movieInfo.vote_count.toLocaleString()})` : ''}</span>
+                </div>
+                <div className='flex bg-indigo-950 h-10 rounded-md items-center p-2 gap-3'>
+                    <img src={stats} alt="View Stats" className='w-5' />
+                    <p>{movieInfo?.popularity?.toFixed(0) || 'N/A'}</p>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default Header;
