@@ -30,7 +30,7 @@ const Header = ({ movieInfo }) => {
                     <span className='text-white font-bold'>{movieInfo?.vote_average?.toFixed(1) || 'N/A'}</span>
                     <span>/10 {movieInfo?.vote_count ? `(${movieInfo.vote_count.toLocaleString()})` : ''}</span>
                 </div>
-                <div className='flex bg-indigo-950 whitespace-nowrap h-10 flex-shrink-0 rounded-md items-center p-2 gap-3'>
+                <div className='flex bg-indigo-950 whitespace-nowrap h-10 rounded-md items-center p-2 gap-3'>
                     <img src={stats} alt="View Stats" className='w-5' />
                     <p>{movieInfo?.popularity?.toFixed(0) || 'N/A'}</p>
                 </div>
