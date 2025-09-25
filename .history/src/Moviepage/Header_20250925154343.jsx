@@ -10,7 +10,13 @@ const Header = ({ movieInfo }) => {
         return hours > 0 ? `${hours}h ${mins}m` : `${mins}m`;
     };
 
-    
+    // Format rating with vote count
+    const formatRating = (rating, voteCount) => {
+        if (!rating) return 'N/A';
+        const formattedRating = rating.toFixed(1);
+        const formattedVoteCount = voteCount ? `(${voteCount.toLocaleString()})` : '';
+        return `${formattedRating}/10 ${formattedVoteCount}`;
+    };
 
     return (
         <div className="flex flex-col items-center gap-4 p-5 sm:p-10 w-full sm:flex-row sm:items-start sm:justify-between">

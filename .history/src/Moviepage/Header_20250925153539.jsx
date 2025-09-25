@@ -10,13 +10,19 @@ const Header = ({ movieInfo }) => {
         return hours > 0 ? `${hours}h ${mins}m` : `${mins}m`;
     };
 
-    
+    // Format rating with vote count
+    const formatRating = (rating, voteCount) => {
+        if (!rating) return 'N/A';
+        const formattedRating = rating.toFixed(1);
+        const formattedVoteCount = voteCount ? `(${voteCount.toLocaleString()})` : '';
+        return `${formattedRating}/10 ${formattedVoteCount}`;
+    };
 
     return (
-        <div className="flex flex-col items-center gap-4 p-5 sm:p-10 w-full sm:flex-row sm:items-start sm:justify-between">
-            <div className="flex flex-col items-center sm:items-start">
-                <h1 className="text-2xl sm:text-4xl font-bold text-center sm:text-left">{movieInfo?.title || 'Unknown Title'}</h1>
-                <div className="flex gap-2 text-gray-100 justify-center sm:justify-start">
+        <div className="flex flex-col gap-4 p-5 sm:p-10 w-full sm:flex-row sm:items-start sm:justify-between">
+            <div>
+                <h1 className="text-4xl font-bold">{movieInfo?.title || 'Unknown Title'}</h1>
+                <div className="flex gap-2 text-gray-100">
                     <p>{movieInfo?.release_date?.split('-')[0] || 'Unknown Year'}</p>
                     <span>•</span>
                     <p>{movieInfo?.adult ? 'R' : 'PG-13'}</p>
@@ -24,7 +30,7 @@ const Header = ({ movieInfo }) => {
                     <p>{formatRuntime(movieInfo?.runtime)}</p>
                 </div>
             </div>
-            <div className='flex text-gray-100 gap-3 mt-4 sm:mt-0 justify-center sm:justify-end'>
+            <div className='flex text-gray-100 gap-3 mt-4 sm:mt-0'>
                 <div className='flex bg-indigo-950 h-10 rounded-md items-center p-2'>
                     <img src={star} alt="Star Rating" className='w-5 mr-2' />
                     <span className='text-white font-bold'>{movieInfo?.vote_average?.toFixed(1) || 'N/A'}</span>
