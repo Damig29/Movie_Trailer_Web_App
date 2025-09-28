@@ -48,7 +48,7 @@ const Home = () => {
       } else {
         setMoviesList(data.results);
       }
-    } catch {
+    } catch (e) {
       setErrorMessage("Error fetching Movies, Please try again later");
     } finally {
       setLoading(false);
@@ -64,7 +64,7 @@ const Home = () => {
     <main>
       <div className="pattern" />
       <div className="wrapper">
-        <header className="mt-10">
+        <header>
           <img src={heroImg} alt="" />
           <h1>
             Find <span className="text-gradient">Movies</span> You'll Enjoy

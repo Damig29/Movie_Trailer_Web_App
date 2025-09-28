@@ -64,14 +64,14 @@ const Home = () => {
     <main>
       <div className="pattern" />
       <div className="wrapper">
-        <header className="mt-10">
+        <>
           <img src={heroImg} alt="" />
           <h1>
             Find <span className="text-gradient">Movies</span> You'll Enjoy
             without the hassle
           </h1>
           <Search search={searchTerm} setSearch={setSearchTerm} />
-        </header>
+        </>
 
         <section className="all-movies">
           <h2 className="mt-[40px]">All Movies</h2>

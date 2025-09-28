@@ -63,8 +63,8 @@ const Home = () => {
   return (
     <main>
       <div className="pattern" />
-      <div className="wrapper">
-        <header className="mt-10">
+      <div className="wrapper ">
+        <header className="">
           <img src={heroImg} alt="" />
           <h1>
             Find <span className="text-gradient">Movies</span> You'll Enjoy

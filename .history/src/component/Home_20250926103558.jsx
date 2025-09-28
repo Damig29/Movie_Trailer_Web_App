@@ -48,7 +48,7 @@ const Home = () => {
       } else {
         setMoviesList(data.results);
       }
-    } catch {
+    } catch (e) {
       setErrorMessage("Error fetching Movies, Please try again later");
     } finally {
       setLoading(false);
@@ -64,7 +64,7 @@ const Home = () => {
     <main>
       <div className="pattern" />
       <div className="wrapper">
-        <header className="mt-10">
+        <header className="flex flex-col items-center justify-center sm:justify-start text-center sm:text-left min-h-[60vh] sm:min-h-0 gap-6">
           <img src={heroImg} alt="" />
           <h1>
             Find <span className="text-gradient">Movies</span> You'll Enjoy
