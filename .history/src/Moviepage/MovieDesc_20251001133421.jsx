@@ -1,31 +1,6 @@
 import { Link } from "react-router-dom";
 
 const MovieDesc = ({ movieInfo }) => {
-  const getYear = (dateString) => {
-    if (!dateString) return '';
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    return Number.isNaN(year) ? '' : String(year);
-  };
-
-  const slugify = (value) => {
-    if (!value) return '';
-    return String(value)
-      .toLowerCase()
-      .replace(/&/g, 'and')
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '');
-  };
-
-  const downloadUrl = (() => {
-    const title = movieInfo?.title || movieInfo?.name || '';
-    const year = getYear(movieInfo?.release_date || movieInfo?.first_air_date);
-    const slug = [slugify(title), year].filter(Boolean).join('-');
-    return slug
-      ? `https://vdl.np-downloader.com/sdm_downloads/download-${slug}/`
-      : 'https://vdl.np-downloader.com/';
-  })();
-
   // Format currency
   const formatCurrency = (amount) => {
     if (!amount || amount === 0) return 'Unknown';
@@ -149,11 +124,9 @@ const MovieDesc = ({ movieInfo }) => {
         
         {/* Download Button */}
         <div className="px-5 py-3 sm:px-10 sm:py-5">
-          <a href={downloadUrl} target="_blank" rel="noopener noreferrer">
-            <button className="bg-linear-to-r from-[#D6C7FF] to-[#AB8BFF] flex-shrink-0 whitespace-nowrap px-3 py-2 font-semibold rounded-md cursor-pointer">
-              Download
-            </button>
-          </a>
+          <button className="bg-linear-to-r from-[#D6C7FF] to-[#AB8BFF] flex-shrink-0 whitespace-nowrap px-3 py-2 font-semibold rounded-md cursor-pointer">
+            Download
+          </button>
         </div>
       </div>
       
